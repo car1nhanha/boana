@@ -6,7 +6,14 @@
 
 ## Objetivo
 
-Desenvolver uma api de disparo de emails
+Desenvolver uma api de disparo de emails semelhante ao [staticforms](https://www.staticforms.xyz) aonde o formulário aponta para a nossa api
+
+```html
+<form action="https://api.boana/submit/${key}" method="POST">
+  <input name="email" />
+  <input name="name" />
+</form>
+```
 
 ## Resumo
 
