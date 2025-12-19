@@ -96,4 +96,4 @@ sequenceDiagram
 
 ## Criação de branch
 
-Use o atalho disponível na atividade no canto direito
+Use o atalho disponível na atividade no canto direito.
