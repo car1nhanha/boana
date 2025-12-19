@@ -93,3 +93,7 @@ sequenceDiagram
 - - Gerenciamento de chaves e webhooks
 - - Logs de envio
 - - Sandbox
+
+## Criação de branch
+
+Use o atalho disponível na atividade no canto direito
