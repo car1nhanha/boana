@@ -1,51 +1,23 @@
-# .github/workflows/code-review.yml
-name: AI Code Review PT-BR
+name: AI Code Reviewer
+
 on:
   pull_request:
-    types: [opened, synchronize, reopened]
-
-permissions:
-  contents: read
-  pull-requests: write
-
+    types:
+      - opened
+      - synchronize
+permissions: write-all
 jobs:
   review:
     runs-on: ubuntu-latest
     steps:
-      - name: Revisão de Código com IA
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: AI Code Review Action
         uses: villesau/ai-codereviewer@v2.7.0
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         with:
-          # Configurações principais
-          model: "gpt-4"
-          temperature: 0.1
-
-          # 🔽 PROMPT COMPLETO EM PORTUGUÊS 🔽
-          system-prompt: |
-            Você é um revisor de código sênior experiente. Analise as mudanças no pull request seguindo estas regras:
-
-            1. **Idioma**: Comente sempre em PORTUGUÊS BRASILEIRO.
-            2. **Tom**: Seja construtivo, educado e profissional.
-            3. **Foco**: Identifique bugs, vulnerabilidades, más práticas e oportunidades de melhoria.
-            4. **Formato**: Use markdown. Para problemas, use emojis:
-               - 🐛 para bugs
-               - ⚠️ para alertas/possíveis problemas
-               - 📝 para sugestões de melhoria
-               - 🔒 para questões de segurança
-               - 🎨 para questões de estilo/legibilidade
-
-            5. **Contexto**: Considere que é um projeto em [React/Node/etc - ADAPTE].
-
-            6. **Prioridade**: Comente apenas em problemas relevantes. Não seja excessivamente crítico com coisas triviais.
-
-            7. **Estrutura do comentário**:
-               - Primeiro: Resumo geral
-               - Depois: Pontos específicos com trechos de código
-               - Sugira correções quando possível
-
-          # Outras configurações
-          review-simple-changes: false
-          review-comment-tag: "ai-review"
-          max-files-to-review: 30
-          excluded-files: "*.md,*.txt,*.json,*.lock,*.yml,*.yaml"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_API_MODEL: "gpt-4o-mini"
+          language: "portuguese"
+          exclude: "**/*.json, **/*.md"
