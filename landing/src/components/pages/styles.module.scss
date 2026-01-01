@@ -1,0 +1,34 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  gap: 109px;
+
+  .headerLeft,
+  .headerRight {
+    flex: 1;
+  }
+
+  .headerLeft {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 45px;
+
+    h1 {
+      font-size: 48px;
+      line-height: 56px;
+    }
+    p {
+      font-size: 21px;
+      line-height: 32px;
+      font-weight: 100;
+      color: #7d7987;
+    }
+  }
+
+  .headerRight {
+    img {
+      width: 100%;
+    }
+  }
+}
