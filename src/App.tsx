@@ -1,5 +1,7 @@
+import { HomePage } from "./components/pages/home";
+
 function App() {
-  return <p>Hello World</p>;
+  return <HomePage />;
 }
 
 export default App;
